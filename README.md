@@ -1,1 +1,3 @@
 # ShoppingListWeb
+
+Simple shopping list
