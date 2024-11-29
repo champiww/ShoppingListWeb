@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Lista da compra</title>
+
+        <link rel="stylesheet" href="style.css" />
+
+        <script src="script.js" defer></script>
+
+    </head>
+    <body>
+        <header>
+            <img
+                src="./images/lista.png"
+                alt="imagen titulo"
+                style="height: 4em"
+            />
+            <h1>Lista da compra</h1>
+        </header>
+        <div class="content">
+            <div class="engadir">
+                <input
+                type="text"
+                name="txtb_elemento"
+                id="txtb_elemento"
+                placeholder="Introduce un elemento"
+            />
+            <br>
+            <button type="button" name="engadir" id="btn_engadir">
+                Engadir elemento
+            </button>
+            <br>
+            <input
+                type="text"
+                name="txtb_filter"
+                id="txtb_filter"
+                placeholder="Filtros"
+            />
+            
+            </div>
+            <div class="lista">
+                <div class="elemLista">
+                    <p>elemento lista&nbsp</p> <p>&#10006</p>
+                </div>
+            </div>
+            <button type="button" id="btn_borrar">Borrar todo</button>
+        </div>
+    </body>
+</html>

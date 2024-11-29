@@ -1,0 +1,22 @@
+body {
+    width: 30%;
+}
+header {
+    display: flex;
+    align-items: center;
+}
+#txtb_filter {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-bottom: 1px solid grey;
+}
+
+.elemLista {
+    display: flex;
+}
+
+/* clases js */
+.ocultar {
+    display: none;
+}
