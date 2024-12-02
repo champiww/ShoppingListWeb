@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="style.css" />
 
         <script src="script.js" defer></script>
-
     </head>
     <body>
         <header>
@@ -22,29 +21,24 @@
         <div class="content">
             <div class="engadir">
                 <input
-                type="text"
-                name="txtb_elemento"
-                id="txtb_elemento"
-                placeholder="Introduce un elemento"
-            />
-            <br>
-            <button type="button" name="engadir" id="btn_engadir">
-                Engadir elemento
-            </button>
-            <br>
-            <input
-                type="text"
-                name="txtb_filter"
-                id="txtb_filter"
-                placeholder="Filtros"
-            />
-            
+                    type="text"
+                    name="txtb_elemento"
+                    id="txtb_elemento"
+                    placeholder="Introduce un elemento"
+                />
+                <br />
+                <button type="button" name="engadir" id="btn_engadir">
+                    Engadir elemento
+                </button>
+                <br />
+                <input
+                    type="text"
+                    name="txtb_filter"
+                    id="txtb_filter"
+                    placeholder="Filtros"
+                />
             </div>
-            <div class="lista">
-                <div class="elemLista">
-                    <p>elemento lista&nbsp</p> <p>&#10006</p>
-                </div>
-            </div>
+            <div id="lista"></div>
             <button type="button" id="btn_borrar">Borrar todo</button>
         </div>
     </body>
