@@ -1,41 +1,19 @@
 'use strict';
 
-function actualizarContador(action) {
-    if (action == '++') {
-        let contador = localStorage.getItem('0');
-        contador++;
-        localStorage.setItem('0', contador);
-    } else if (action == '--') {
-        let contador = localStorage.getItem('0');
-        contador--;
-        localStorage.setItem('0', contador);
-    }
-}
-
-function actualizarListaElementos() {
-    let divLista = document.getElementById('lista');
-
+function actualizarListaElementos(divLista) {
     [...divLista.childNodes].map((node) => {
         divLista.removeChild(node);
     });
-
-    Object.keys(localStorage)
-        .reverse()
-        .map((key) => {
-            if (key != 0) {
-                engadirElementoHTML(key);
-            }
-        });
 }
 
-function engadirElementoHTML(key) {
+function engadirElementoHTML(productoEngadir) {
     let divLista = document.getElementById('lista');
     let divElemento = document.createElement('div');
-    divElemento.setAttribute('id', 'divElemento');
+
     let span1 = document.createElement('span');
     let span2 = document.createElement('span');
 
-    span1.innerText = localStorage.getItem(key) + ' ';
+    span1.innerText = productoEngadir + ' ';
     span2.innerText = '\u2715';
 
     divElemento.append(span1);
@@ -44,45 +22,70 @@ function engadirElementoHTML(key) {
     divLista.append(divElemento);
 }
 
-function engadirElementoLocalStorage(elemento, posicion) {
-    localStorage.setItem(posicion.toString(), elemento);
-    engadirElementoHTML(posicion.toString());
+function engadirElementoLocalStorage(producto) {
+    let lista = localStorage.getItem();
+    let listaParseada = JSON.parse(lista);
+    listaParseada.push(producto);
+    localStorage.setItem('lista', JSON.stringify(listaParseada));
 }
 
-function eliminarElementoLocalStorage(elemento, posicion) {
-    localStorage.removeItem(posicion.toString(), elemento);
+function eliminarElementoHTML(divLista, divElemento) {
+    divLista.removeChild(divElemento);
+}
+
+function eliminarElementoLocalStorage(posicion) {
+    console.log(localStorage.key(posicion));
+
+    localStorage.removeItem(posicion);
+}
+
+function filtro(divLista, contenido) {
+    [...divLista.childNodes].map(elemento, () => {});
+    // let index = [...divLista.childNodes].findIndex((elemento) => {
+    //     return elemento == event.target.closest('div');
+    // });
 }
 
 // Object.assign({}, localStorage)
 // *************************************************************
 
-if (localStorage.getItem('0') == null) {
-    localStorage.setItem('0', '1');
+const divLista = document.getElementById('lista');
+
+if (localStorage.getItem('lista') == null) {
+    let listaVacia = [];
+    localStorage.setItem('lista', JSON.stringify(listaVacia));
 }
+
 actualizarListaElementos();
 
 //Click no botón engadir
 document.getElementById('btn_engadir').addEventListener('click', () => {
-    engadirElementoLocalStorage(
-        document.getElementById('txtb_elemento').value,
-        localStorage.getItem('0')
-    );
-    actualizarContador('++');
+    let productoEngadir = document.getElementById('txtb_elemento').value;
+    engadirElementoLocalStorage(productoEngadir);
+    engadirElementoHTML(productoEngadir);
 });
 
 //Click no botón borrar todo
 document.getElementById('btn_borrar').addEventListener('click', () => {
     localStorage.clear();
     actualizarListaElementos();
-    localStorage.setItem('0', '1');
 });
 
 //Click no botón de borrar elemento
-let divLista = document.getElementById('lista');
-if (divLista.childElementCount > 0) {
-    divLista.addEventListener('click', (event) => {
-        if (event.target.tagNAme == 'SPAN') {
-            console.log('a');
+divLista.addEventListener('click', (event) => {
+    if (event.target.tagName == 'SPAN' && event.target.innerText == '\u2715') {
+        if (confirm('¿Quiere borrar el artículo?')) {
+            let index = [...divLista.childNodes].findIndex((elemento) => {
+                return elemento == event.target.closest('div');
+            });
+
+            eliminarElementoLocalStorage(index + 1);
+            eliminarElementoHTML(divLista, [...divLista.childNodes][index]);
         }
-    });
-}
+    }
+});
+
+//Filtro
+document.getElementById('txtb_filter').addEventListener('input', () => {
+    filtro(divLista);
+});
