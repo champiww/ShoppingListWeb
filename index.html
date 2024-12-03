@@ -10,36 +10,38 @@
         <script src="script.js" defer></script>
     </head>
     <body>
-        <header>
-            <img
-                src="./images/lista.png"
-                alt="imagen titulo"
-                style="height: 4em"
-            />
-            <h1>Lista da compra</h1>
-        </header>
-        <div class="content">
-            <div class="engadir">
-                <input
-                    type="text"
-                    name="txtb_elemento"
-                    id="txtb_elemento"
-                    placeholder="Introduce un elemento"
+        <div id="fondo">
+            <header>
+                <img
+                    src="./images/lista.png"
+                    alt="imagen titulo"
+                    style="height: 4em"
                 />
-                <br />
-                <button type="button" name="engadir" id="btn_engadir">
-                    Engadir elemento
-                </button>
-                <br />
-                <input
-                    type="text"
-                    name="txtb_filter"
-                    id="txtb_filter"
-                    placeholder="Filtros"
-                />
+                <h1>Lista da compra</h1>
+            </header>
+            <div class="content">
+                <div class="engadir">
+                    <input
+                        type="text"
+                        name="txtb_elemento"
+                        id="txtb_elemento"
+                        placeholder="Introduce un elemento"
+                    />
+                    <br />
+                    <button type="button" name="engadir" id="btn_engadir">
+                        &#x2b Engadir elemento
+                    </button>
+                    <br />
+                    <input
+                        type="text"
+                        name="txtb_filter"
+                        id="txtb_filter"
+                        placeholder="Buscar"
+                    />
+                </div>
+                <div id="lista"></div>
+                <button type="button" id="btn_borrar">Borrar todo</button>
             </div>
-            <div id="lista"></div>
-            <button type="button" id="btn_borrar">Borrar todo</button>
         </div>
     </body>
 </html>

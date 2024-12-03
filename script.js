@@ -1,6 +1,7 @@
 'use strict';
 
-function actualizarListaElementos(divLista) {
+function actualizarListaElementos() {
+    let divLista = document.getElementById('lista');
     [...divLista.childNodes].map((node) => {
         divLista.removeChild(node);
     });
@@ -9,7 +10,7 @@ function actualizarListaElementos(divLista) {
 function engadirElementoHTML(productoEngadir) {
     let divLista = document.getElementById('lista');
     let divElemento = document.createElement('div');
-
+    divElemento.setAttribute('class', 'divProducto');
     let span1 = document.createElement('span');
     let span2 = document.createElement('span');
 
@@ -55,6 +56,8 @@ if (localStorage.getItem('lista') == null) {
     let listaVacia = [];
     localStorage.setItem('lista', JSON.stringify(listaVacia));
 }
+
+//Ocultar boton borrar todo
 
 actualizarListaElementos();
 
