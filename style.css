@@ -53,9 +53,14 @@ header {
     outline: none;
     border: 1px solid grey;
 }
-
+#lista {
+    display: flex;
+}
 .divProducto {
     display: flex;
+    width: 50%;
+
+    border: 1px solid black;
 }
 
 /* clases js */
